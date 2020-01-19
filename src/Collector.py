@@ -1,5 +1,5 @@
 import json
-
+import pprint
 import requests
 from bs4 import BeautifulSoup
 
@@ -47,6 +47,8 @@ class Collector:
         # pp.pprint(meta_content)
         # print()
 
+        # return json.dumps(meta_content, ensure_ascii=False)
+
         return meta_content
 
     def extract_main_title(self, soup):
@@ -82,4 +84,5 @@ class Collector:
         for paragraph in soup.find("article").findAll("p", {"id", True}):
             contents["paragraphs"].append(paragraph.text)
 
-        return json.dumps(contents, ensure_ascii=False)
+        return contents
+        # return json.dumps(contents, ensure_ascii=False)
